@@ -52,18 +52,22 @@ void menuPrincipal()
         switch (opcao)
         {
         case 1:
+            system("clear");
             menuTutorial();
             break;
         case 2:
+            system("clear");
             menuComparativo();
             break;
         case 3:
+            system("clear");
             menuComparaOutros();
             break;
         case 0:
             system("clear");
             break;
         default:
+            system("clear");
             cout << "Uai, não entendi!\n";
             break;
         }
@@ -88,17 +92,22 @@ void menuTutorial()
         switch (opcao)
         {
         case 1:
+            system("clear");
             tutorialQuick();
             break;
         case 2:
+            system("clear");
             tutorialMerge();
             break;
         case 3:
+            system("clear");
             tutorialBucket();
             break;
         case 0:
+            system("clear");
             break;
         default:
+            system("clear");
             cout << "Uai, não entendi!\n";
             break;
         }
@@ -127,18 +136,22 @@ void menuComparativo()
         switch (opcao)
         {
         case 1:
+            system("clear");
             //populaVetor(vetorDez, DEZ);
             compara(vetorDez, DEZ);
             break;
         case 2:
+            system("clear");
             //populaVetor(vetorCem, CEM);
             compara(vetorCem, CEM);
             break;
         case 3:
+            system("clear");
             //populaVetor(vetorMil, MIL);
             compara(vetorMil, MIL);
             break;
         case 4:
+            system("clear");
             //populaVetor(vetorDezMil, DEZ_MIL);
             compara(vetorDezMil, DEZ_MIL);
             break;
@@ -146,6 +159,7 @@ void menuComparativo()
             system("clear");
             break;
         default:
+            system("clear");
             cout << "Uai, não entendi!!\n";
             break;
         }
@@ -154,6 +168,7 @@ void menuComparativo()
 
 void menuComparaOutros()
 {
+    system("clear");
     int opcao;
     do
     {
@@ -169,18 +184,22 @@ void menuComparaOutros()
         switch (opcao)
         {
         case 1:
+            system("clear");
             comparaOrdenado();
             break;
         case 2:
+            system("clear");
             comparaDecrescente();
             break;
         case 3:
+            system("clear");
             comparaPoucoDesordenado();
             break;
         case 0:
             system("clear");
             break;
         default:
+            system("clear");
             cout << "Uai, não entendi!" << endl;
             break;
         }
@@ -913,40 +932,49 @@ void compara(int vetor[], int tamanho)
         timeMerge = (double)(fim - inicio) / CLOCKS_PER_SEC;
         //pause(0.72); //Tempo para random trocar
 
-        //Bucket Sort
-        populaVetor(vetor, tamanho);
-        inicio = clock();
-        bucketSort(vetor, tamanho);
-        fim = clock();
-        timeBucket = (double)(fim - inicio) / CLOCKS_PER_SEC;
+        // //Bucket Sort
+        // populaVetor(vetor, tamanho);
+        // inicio = clock();
+        // bucketSort(vetor, tamanho);
+        // fim = clock();
+        // timeBucket = (double)(fim - inicio) / CLOCKS_PER_SEC;
 
-        //TIME QUICK SORT
-        if (timeQuick < timeMerge && timeQuick < timeBucket)
+        if (timeQuick < timeMerge)
         {
             countQuick += 1;
         }
-
-        //TIME MERGE SORT
-        if (timeMerge < timeQuick && timeMerge < timeBucket)
+        if (timeMerge < timeQuick)
         {
             countMerge += 1;
         }
 
-        //TIME BUCKET SORT
-        if (timeBucket < timeQuick && timeBucket < timeMerge)
-        {
-            countBucket += 1;
-        }
+        // //TIME QUICK SORT
+        // if (timeQuick < timeMerge && timeQuick < timeBucket)
+        // {
+        //     countQuick += 1;
+        // }
+
+        // //TIME MERGE SORT
+        // if (timeMerge < timeQuick && timeMerge < timeBucket)
+        // {
+        //     countMerge += 1;
+        // }
+
+        // //TIME BUCKET SORT
+        // if (timeBucket < timeQuick && timeBucket < timeMerge)
+        // {
+        //     countBucket += 1;
+        // }
 
         cout << "Quick Sort(" << timeQuick << "): " << countQuick << "\t";
-        cout << "Merge Sort(" << timeMerge << "): " << countMerge << "\t";
-        cout << "Bucket Sort(" << timeBucket << "): " << countBucket << "\n";
+        cout << "Merge Sort(" << timeMerge << "): " << countMerge << "\t\n";
+        // cout << "Bucket Sort(" << timeBucket << "): " << countBucket << "\n";
     }
 
     cout << "Pontuação Final:\n";
     cout << "Quick Sort: " << countQuick << endl;
     cout << "Merge Sort: " << countMerge << endl;
-    cout << "Bucket Sort: " << countBucket << endl;
+    // cout << "Bucket Sort: " << countBucket << endl;
 }
 
 void comparaOrdenado()
@@ -980,11 +1008,11 @@ void comparaOrdenado()
 
     if (timeQuick < timeMerge)
     {
-        cout << "Quick: " << timeQuick << endl;
+        cout << "Tempo Quick: " << timeQuick << "ms" << endl;
     }
     else
     {
-        cout << "Merge: " << timeMerge << endl;
+        cout << "Tempo Merge: " << timeMerge << "ms" << endl;
     }
 
     // inicio = clock();
