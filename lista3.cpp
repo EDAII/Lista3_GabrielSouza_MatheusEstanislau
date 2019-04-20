@@ -1,4 +1,7 @@
 #include <bits/stdc++.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
 #define DEZ 10
 #define CEM 100
 #define MIL 1000
@@ -6,7 +9,7 @@
 
 using namespace std;
 
-void menuPratica();
+void menuComparaOutros();
 void menuPrincipal();
 void menuTutorial();
 void menuComparativo();
@@ -17,6 +20,9 @@ void quick_sort(int *a, int inicio, int fim);
 void mergeSort(int *vetor, int posicaoInicio, int posicaoFim);
 void bucketSort(int vetor[], int tamanho);
 void compara(int vetor[], int tamanho);
+void comparaOrdenado();
+void comparaDecrescente();
+void comparaPoucoDesordenado();
 void populaVetor(int vetor[], int tamanho);
 void imprimirVetor(int vetor[], int tamanho);
 void pause(float delay1);
@@ -34,12 +40,12 @@ void menuPrincipal()
     int opcao;
     do
     {
-        cout << "=====Menu Principal=====\n";
-        cout << "= 1 - Tutorial         =\n";
-        cout << "= 2 - Comparativo      =\n";
-        cout << "= 3 - Prática          =\n";
-        cout << "= 0 - Sair             =\n";
-        cout << "========================\n";
+        cout << "======== Menu Principal =======\n";
+        cout << "= 1 - Tutorial                =\n";
+        cout << "= 2 - Comparativo por tamanho =\n";
+        cout << "= 3 - Outros Comparativos     =\n";
+        cout << "= 0 - Sair                    =\n";
+        cout << "===============================\n";
 
         cin >> opcao;
 
@@ -52,7 +58,7 @@ void menuPrincipal()
             menuComparativo();
             break;
         case 3:
-            menuPratica();
+            menuComparaOutros();
             break;
         case 0:
             system("clear");
@@ -146,16 +152,297 @@ void menuComparativo()
     } while (opcao);
 }
 
-void menuPratica()
+void menuComparaOutros()
 {
+    int opcao;
+    do
+    {
+        cout << "===== Outros Comparativos =====" << endl;
+        cout << "= 1 - Vetor já ordenado[100]  =" << endl;
+        cout << "= 2 - Vetor decrescente[100]  =" << endl;
+        cout << "= 3 - Vetor pouco desordenado =" << endl;
+        cout << "= 0 Voltar                    =" << endl;
+        cout << "===============================" << endl;
+
+        cin >> opcao;
+
+        switch (opcao)
+        {
+        case 1:
+            comparaOrdenado();
+            break;
+        case 2:
+            comparaDecrescente();
+            break;
+        case 3:
+            comparaPoucoDesordenado();
+            break;
+        case 0:
+            system("clear");
+            break;
+        default:
+            cout << "Uai, não entendi!" << endl;
+            break;
+        }
+    } while (opcao);
 }
 
 void tutorialQuick()
 {
+    char lixo;
+    system("clear");
+    cout << "É um algoritmo de comparação que emprega a estratégia de “divisão e conquista”." << endl;
+    cout << "A ideia básica é dividir o problema de ordenar um conjunto com n itens em dois\n";
+    cout << "problemas menores. Os problemas menores são ordenados independentemente\n";
+    cout << "e os resultados são combinados para produzir a solução final.\n";
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
+
+    cout << "Basicamente a operação do algoritmo pode ser resumida na seguinte estratégia: divide sua" << endl;
+    cout << "lista de entrada em duas sub-listas a partir de um pivô, para em seguida realizar o mesmo" << endl;
+    cout << "procedimento nas duas listas menores até uma lista unitária." << endl;
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
+
+    cout << "Funcionamento do algoritmo:\n"
+         << endl;
+
+    cout << "\t* Escolhe um elemento da lista chamado pivô." << endl;
+    cout << "\t* Reorganiza a lista de forma que os elementos menores que o pivô fiquem de um lado, e os\n";
+    cout << "maiores fiquem de outro. Esta operação é chamada de “particionamento”." << endl;
+    cout << "\t* Recursivamente ordena a sub-lista abaixo e acima do pivô.\n"
+         << endl;
+
+    cout << "\t\tFonte: https://www.treinaweb.com.br/blog/conheca-os-principais-algoritmos-de-ordenacao/" << endl;
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
+
+    cout << "Vetor desordenado: " << endl;
+    cout << "[3 0 1 8 7 2 5 4 9 6]\n"
+         << endl;
+
+    cout << "pivo(3) < direita(6)" << endl;
+    cout << "[3 0 1 8 7 2 5 4 9 6]\n"
+         << endl;
+    pause(1.5);
+    system("clear");
+
+    cout << "pivo(3) < direita(9)" << endl;
+    cout << "[3 0 1 8 7 2 5 4 9 6]\n"
+         << endl;
+    pause(1.5);
+    system("clear");
+
+    cout << "pivo(3) < direita(4)" << endl;
+    cout << "[3 0 1 8 7 2 5 4 9 6]\n"
+         << endl;
+    pause(1.5);
+    system("clear");
+
+    cout << "pivo(3) < direita(5)" << endl;
+    cout << "[3 0 1 8 7 2 5 4 9 6]\n"
+         << endl;
+    pause(1.5);
+    system("clear");
+
+    cout << "pivo(3) > direita(2)" << endl;
+    cout << "Troca posição (pivo com direita)" << endl;
+    cout << "[(2) 0 1 8 7 (3) 5 4 9 6]\n"
+         << endl;
+    pause(2);
+    system("clear");
+
+    cout << "pivo(3) > esquerda(0)" << endl;
+    cout << "[2 0 1 8 7 3 5 4 9 6]\n"
+         << endl;
+    pause(1.5);
+    system("clear");
+
+    cout << "pivo(3) > esquerda(1)" << endl;
+    cout << "[2 0 1 8 7 3 5 4 9 6]\n"
+         << endl;
+    pause(1.5);
+    system("clear");
+
+    cout << "pivo(3) < esquerda(8)" << endl;
+    cout << "Troca posição (pivo com esquerda)" << endl;
+    cout << "[2 0 1 (3) 7 (8) 5 4 9 6]\n"
+         << endl;
+    pause(2);
+    system("clear");
+
+    cout << "pivo(3) < direita(7)" << endl;
+    cout << "[2 0 1 3 7 8 5 4 9 6]\n"
+         << endl;
+    pause(1.5);
+    system("clear");
+
+    cout << "Pivo já está posição correta!" << endl;
+    pause(2);
+    system("clear");
+
+    cout << "Todos os menores já estão a esquerda." << endl;
+    cout << "Todos os maiores já estão a direita." << endl;
+    cout << "[(2 0 1) 3 (7 8 5 4 9 6)]\n"
+         << endl;
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
+
+    cout << "Ora de ordenar os valores da esquerda!" << endl;
+    cout << "[2 0 1]" << endl;
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
+
+    cout << "[2 0 1]" << endl;
+    cout << "direita(1) > esquerda(2)?" << endl;
+    cout << "Então troca\n"
+         << endl;
+
+    cout << "[1 0 2]" << endl;
+    pause(2);
+    system("clear");
+
+    cout << "[1 0 2]" << endl;
+    cout << "direita(2) > esquerda(0)?" << endl;
+    cout << "Então 2 já está na posição correta!\n"
+         << endl;
+
+    cout << "[1 0 2]" << endl;
+    cout << "direita(0) > esquerda(1)?" << endl;
+    cout << "Então troca\n"
+         << endl;
+
+    cout << "[0 1 2]" << endl;
+    cout << "Agora todo o lado esquerdo até o pivo esta ordenado" << endl;
+    pause(3);
+    system("clear");
+
+    cout << "[0\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1 2\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1 2 3]\n"
+         << endl;
+
+    cout << "Agora falta só o lado direito!" << endl;
+    cout << "[7 8 5 4 9 6]" << endl;
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
+
+    cout << "A técnica é a mesma empregada ao lado esquerdo" << endl;
+    cout << "Logo após os particionamentos o lado direito fica assim: \n"
+         << endl;
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
+
+    cout << "[4\n";
+    pause(1);
+    system("clear");
+    cout << "[4 5\n";
+    pause(1);
+    system("clear");
+    cout << "[4 5 6\n";
+    pause(1);
+    system("clear");
+    cout << "[4 5 6 7\n";
+    pause(1);
+    system("clear");
+    cout << "[4 5 6 7 8\n";
+    pause(1);
+    system("clear");
+    cout << "[4 5 6 7 8 9]\n";
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
+
+    cout << "Por fim:" << endl;
+
+    cout << "[0\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1 2\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1 2 3\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1 2 3 4\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1 2 3 4 5\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1 2 3 4 5 6\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1 2 3 4 5 6 7\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1 2 3 4 5 6 7 8\n";
+    pause(1);
+    system("clear");
+    cout << "[0 1 2 3 4 5 6 7 8 9]\n";
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
 }
 
 void tutorialMerge()
 {
+    char lixo;
+    system("clear");
+
+    cout << "Esse  algoritmo  divide  o  problema  em  pedaços menores, resolve cada pedaço e" << endl;
+    cout << "depois junta (merge) os resultados. O vetor será dividido em duas partes iguais," << endl;
+    cout << "que serão cada uma divididas em duas partes, e assim até ficar um ou dois elementos" << endl;
+    cout << "cuja ordenação é trivial." << endl;
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
+
+    cout << "Para juntar as partes ordenadas os dois elementos de  cada parte  são separados e o menor" << endl;
+    cout << "deles é selecionado e retirado de sua parte. Em seguida os menores entre os restantes são" << endl;
+    cout << "comparados e assim se prossegue até juntar as partes." << endl;
+
+    cout << "\nTecle ENTER para prosseguir";
+    setbuf(stdin, NULL);
+    scanf("%c", &lixo);
+    system("clear");
 }
 
 void tutorialBucket()
@@ -557,6 +844,7 @@ void compara(int vetor[], int tamanho)
         quick_sort(vetor, 0, tamanho - 1);
         fim = clock();
         timeQuick = (double)(fim - inicio) / CLOCKS_PER_SEC;
+        //pause(0.72); //Tempo para o random trocar
 
         //Merge sort
         populaVetor(vetor, tamanho);
@@ -564,6 +852,7 @@ void compara(int vetor[], int tamanho)
         mergeSort(vetor, 0, tamanho - 1);
         fim = clock();
         timeMerge = (double)(fim - inicio) / CLOCKS_PER_SEC;
+        //pause(0.72); //Tempo para random trocar
 
         //Bucket Sort
         populaVetor(vetor, tamanho);
@@ -599,6 +888,152 @@ void compara(int vetor[], int tamanho)
     cout << "Quick Sort: " << countQuick << endl;
     cout << "Merge Sort: " << countMerge << endl;
     cout << "Bucket Sort: " << countBucket << endl;
+}
+
+void comparaOrdenado()
+{
+    int vetor[CEM];
+    int countQuick = 0,
+        countMerge = 0,
+        countBucket = 0;
+    time_t inicio, fim;
+    double timeQuick,
+        timeMerge,
+        timeBucket;
+
+    for (int i = 0; i < CEM; i++)
+    {
+        vetor[i] = i + 1;
+    }
+    imprimirVetor(vetor, CEM);
+
+    inicio = clock();
+    quick_sort(vetor, 0, CEM - 1);
+    fim = clock();
+
+    timeQuick = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    inicio = clock();
+    mergeSort(vetor, 0, CEM - 1);
+    fim = clock();
+
+    timeMerge = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    if (timeQuick < timeMerge)
+    {
+        cout << "Quick: " << timeQuick << endl;
+    }
+    else
+    {
+        cout << "Merge: " << timeMerge << endl;
+    }
+
+    // inicio = clock();
+    // bucketSort(vetor, CEM);
+    // fim = clock();
+
+    // timeBucket = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    // if (timeQuick < timeMerge && timeQuick < timeBucket)
+    // {
+    //     cout << "Quick mais rápido em vetor ordenado, neste teste" << endl;
+    //     cout << "Tempo: " << timeQuick << endl;
+    // }
+
+    // if (timeMerge < timeQuick && timeMerge < timeBucket)
+    // {
+    //     cout << "Merge mais rápido em vetor ordenado, neste teste" << endl;
+    //     cout << "Tempo: " << timeMerge << endl;
+    // }
+
+    // if (timeBucket < timeQuick && timeBucket < timeMerge)
+    // {
+    //     cout << "Bucket mais rápido em vetor ordenado, neste teste" << endl;
+    //     cout << "Tempo: " << timeBucket << endl;
+    // }
+}
+
+void comparaDecrescente()
+{
+    int vetor[CEM];
+    int countQuick = 0,
+        countMerge = 0,
+        countBucket = 0;
+    time_t inicio, fim;
+    double timeQuick,
+        timeMerge,
+        timeBucket;
+
+    for (int i = 0; i < CEM; i++)
+    {
+        vetor[i] = CEM - i;
+    }
+    imprimirVetor(vetor, CEM);
+
+    inicio = clock();
+    quick_sort(vetor, 0, CEM - 1);
+    fim = clock();
+
+    timeQuick = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    inicio = clock();
+    mergeSort(vetor, 0, CEM - 1);
+    fim = clock();
+
+    timeMerge = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    if (timeQuick < timeMerge)
+    {
+        cout << "Quick: " << timeQuick << endl;
+    }
+    else
+    {
+        cout << "Merge: " << timeMerge << endl;
+    }
+}
+
+void comparaPoucoDesordenado()
+{
+    int vetor[CEM];
+    int countQuick = 0,
+        countMerge = 0,
+        countBucket = 0;
+    time_t inicio, fim;
+    double timeQuick,
+        timeMerge,
+        timeBucket;
+
+    for (int i = 0; i < CEM; i++)
+    {
+        vetor[i] = i + 1;
+    }
+
+    vetor[50] = 0;
+    vetor[10] = 98;
+    vetor[80] = 14;
+
+    imprimirVetor(vetor, CEM);
+
+    inicio = clock();
+    quick_sort(vetor, 0, CEM - 1);
+    fim = clock();
+
+    timeQuick = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    inicio = clock();
+    mergeSort(vetor, 0, CEM - 1);
+    fim = clock();
+
+    timeMerge = (double)(fim - inicio) / CLOCKS_PER_SEC;
+
+    if (timeQuick < timeMerge)
+    {
+        cout << "Quick: " << timeQuick << endl;
+    }
+    else
+    {
+        cout << "Merge: " << timeMerge << endl;
+    }
 }
 
 void populaVetor(int vetor[], int tamanho)
