@@ -15,6 +15,7 @@ Ctrl + Alt + T
 2. Clonar o repositório com o comando : 
 ```
 git clone https://github.com/EDAII/Lista3_GabrielSouza_MatheusEstanislau.git
+```
 3. Entrar na pasta do projeto:
 ```
 cd Lista3_GabrielSouza_MatheusEstanislau
