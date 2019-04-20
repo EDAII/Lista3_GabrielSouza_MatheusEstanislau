@@ -439,10 +439,69 @@ void tutorialMerge()
     cout << "deles é selecionado e retirado de sua parte. Em seguida os menores entre os restantes são" << endl;
     cout << "comparados e assim se prossegue até juntar as partes." << endl;
 
+    cout << "\t\tFonte: https://www.treinaweb.com.br/blog/conheca-os-principais-algoritmos-de-ordenacao/" << endl;
+
     cout << "\nTecle ENTER para prosseguir";
     setbuf(stdin, NULL);
     scanf("%c", &lixo);
     system("clear");
+
+    cout << "Vetor inicial:\n";
+    cout << "[6 5 3 1 8 7 2 4]\n";
+    pause(3);
+    system("clear");
+
+    cout << "[6 5]\n";
+    pause(2);
+    system("clear");
+
+    cout << "[6 5] [3 1]\n";
+    pause(2);
+    system("clear");
+
+    cout << "[6 5] [3 1] [8 7]\n";
+    pause(2);
+    system("clear");
+
+    cout << "[6 5] [3 1] [8 7] [2 4]\n\n";
+
+    cout << "[5 6]\n";
+    pause(2);
+    system("clear");
+
+    cout << "[6 5] [3 1] [8 7] [2 4]\n\n";
+
+    cout << "[5 6] [1 3]\n";
+    pause(2);
+    system("clear");
+
+    cout << "[6 5] [3 1] [8 7] [2 4]\n\n";
+
+    cout << "[5 6] [1 3] [7 8]\n";
+    pause(2);
+    system("clear");
+
+    cout << "[6 5] [3 1] [8 7] [2 4]\n\n";
+    cout << "[5 6] [1 3] [7 8] [2 4]\n";
+    pause(2);
+    system("clear");
+
+    cout << "[5 6] [1 3] [7 8] [2 4]\n\n";
+    pause(3);
+
+    cout << "[1 3 5 6]\n";
+    pause(2);
+    system("clear");
+
+    cout << "[5 6] [1 3] [7 8] [2 4]\n\n";
+    cout << "[1 3 5 6] [2 4 7 8]\n";
+    pause(2);
+    system("clear");
+
+    cout << "[1 3 5 6] [2 4 7 8]\n\n";
+    pause(3);
+
+    cout << "[1 2 3 4 5 6 7 8]" << endl;
 }
 
 void tutorialBucket()
